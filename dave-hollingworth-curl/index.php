@@ -25,43 +25,31 @@ $data = json_decode($response, true);
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<?php require_once "includes/header.html"; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReinX24 Github Repositories</title>
-    <link rel="stylesheet" href="css/pico.min.css" />
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" /> -->
-</head>
+<h1>Repositories</h1>
 
-<body>
+<a href="new.php">New Repository</a>
 
-    <main>
-        <h1>Repositories</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($data as $repository) : ?>
+            <tr>
+                <td>
+                    <a href="show.php?full_name=<?= $repository["full_name"]; ?>">
+                        <?= $repository["full_name"]; ?>
+                    </a>
+                </td>
+                <td><?= htmlspecialchars($repository["description"]); ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($data as $repository) : ?>
-                    <tr>
-                        <td>
-                            <a href="show.php?full_name=<?= $repository["full_name"]; ?>">
-                                <?= $repository["full_name"]; ?>
-                            </a>
-                        </td>
-                        <td><?= htmlspecialchars($repository["description"]); ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </main>
-</body>
-
-</html>
+<?php require_once "includes/footer.html"; ?>
