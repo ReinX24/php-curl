@@ -17,19 +17,18 @@ $data = json_decode($response, true);
 
 <?php require_once "includes/header.html"; ?>
 
-<h1>Repository</h1>
-<dl>
-    <dt>Name</dt>
-    <dd><?= $data["name"]; ?></dd>
-    <dt>Description</dt>
-    <dd><?= htmlspecialchars($data["description"]); ?></dd>
-</dl>
+<h1>Edit Repository</h1>
 
-<a href="edit.php?full_name=<?= $data["full_name"]; ?>">Edit</a>
-
-<form action="delete.php" method="POST">
+<form action="update.php" method="POST">
     <input type="hidden" name="full_name" value="<?= $data["full_name"]; ?>">
-    <button>Delete</button>
+
+    <label for="name">Name</label>
+    <input type="text" name="name" value="<?= $data["name"]; ?>">
+
+    <label for="description">Description</label>
+    <textarea name="description"><?= htmlspecialchars($data["description"]) ?></textarea>
+
+    <button>Submit</button>
 </form>
 
 <?php require_once "includes/footer.html"; ?>

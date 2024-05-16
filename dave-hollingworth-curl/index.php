@@ -2,7 +2,7 @@
 
 $ch = include_once "includes/init_curl.php";
 
-curl_setopt($ch, CURLOPT_URL, "https://api.github.com/user/repos");
+curl_setopt($ch, CURLOPT_URL, "https://api.github.com/user/repos?per_page=50");
 
 $response = curl_exec($ch);
 

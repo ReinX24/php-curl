@@ -2,7 +2,8 @@
 
 $headers = [
     "User-Agent: Example REST API Client",
-    "Authorization: token GET_FROM_GITHUB",
+    "Authorization: token GET_FROM_GITHUB_SETTINGS",
+    // ! Do not upload authorization token
 ];
 
 $ch = curl_init();
