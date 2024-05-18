@@ -26,10 +26,6 @@ curl_close($ch);
 
 $comments = json_decode($response, true);
 
-echo "<pre>";
-var_dump($comments);
-echo "</pre>";
-
 ?>
 
 <!DOCTYPE html>
@@ -48,6 +44,15 @@ echo "</pre>";
     <h1><a href="index.php">Posts</a></h1>
     <h1><?= $data["title"]; ?></h1>
     <p><?= $data["body"]; ?></p>
+
+    <hr>
+    <h4>Comments</h4>
+    <?php foreach ($comments as $comment) : ?>
+        <div>
+            <h6><?= $comment["email"] ?></h6>
+            <p><?= $comment["body"]; ?></p>
+        </div>
+    <?php endforeach; ?>
 
 </body>
 
